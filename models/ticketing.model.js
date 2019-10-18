@@ -36,6 +36,11 @@ const ticketinSchema = new Schema({
     required: true
   },
 
+  photo: {
+    type: String,
+    require: false
+  },
+
   date: {
     type: String,
     require: true

@@ -47,6 +47,7 @@ const ticketingController = {
       isipengaduan: req.body.isipengaduan,
       pelapor: req.body.pelapor,
       status: req.body.status,
+      photo: req.body.photo,
       date: req.date()
     }
 
