@@ -20,6 +20,7 @@ function AppServer() {
 
   // book route
   this.server.get('/me', ticketingController.getHandler);
+  this.server.get('/me/user', ticketingController.getbynameHandler);
   this.server.post('/pengaduan', ticketingController.postHandler);
   this.server.put('/pengaduan/:id', ticketingController.putHandler);
   this.server.del('/pengaduan/:id', ticketingController.deleteHandler);

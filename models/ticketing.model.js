@@ -44,6 +44,11 @@ const ticketinSchema = new Schema({
   date: {
     type: String,
     require: true
+  },
+
+  uuid:{
+    type: String,
+    required: true
   }
   
 });

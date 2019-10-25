@@ -23,6 +23,7 @@ var storage =   multer.diskStorage({
 
 const ticketingController = {
   getHandler : (req, res) => {
+    let payload = req.query
     ticketing.find((err, value) => {
       if (err) {
         return response.wrapper_error(res, httpError.INTERNAL_ERROR, 'An error has occurred');
@@ -36,6 +37,26 @@ const ticketingController = {
 
     });
   },
+  getbynameHandler : (req, res) => {
+    let payload = req.query
+    console.log("test");
+    console.log(payload);
+    let data = ticketing.findOne(payload)
+    console.log(data)
+    ticketing.find(payload, (err, value) => {
+      console.log(value)
+      if (err) {
+        return response.wrapper_error(res, httpError.INTERNAL_ERROR, 'An error has occurred');
+      }
+
+      if (value) {
+        response.wrapper_success(res, 200, 'Request has been proceseed', value);
+      } else {
+        response.wrapper_error(res, httpError.NOT_FOUND, 'Data pengaduan tidak ditemukan');
+      }
+    })
+  },
+  
   postHandler : (req, res) => {
     const date = Math.floor(Date.now() / 1000);
 
@@ -48,7 +69,8 @@ const ticketingController = {
       pelapor: req.body.pelapor,
       status: req.body.status,
       photo: req.body.photo,
-      date: req.date()
+      date: req.date(),
+      uuid: req.body.uuid
     }
 
 
